@@ -36,7 +36,7 @@
 	}
 </script>
 
-<form class="mt-1 mx-auto max-w-5xl flex rounded-full shadow-sm gap-4">
+<form class="mt-1 mx-auto max-w-5xl flex flex-col sm:flex-row rounded-full shadow-sm gap-4">
 	<div class="flex">
 		<span
 			class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"
