@@ -1,6 +1,8 @@
 <script type="ts">
 	import CreatePage from '$lib/components/CreatePage.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
+    import { user } from '$lib/db';
+    console.log($user)
 </script>
 
 <NavBar />
@@ -22,8 +24,16 @@
 					<div
 						class="mt-8 flex flex-col text-center sm:mt-12 sm:flex-row sm:items-center sm:justify-center sm:space-x-5"
 					>
-						<CreatePage />
-					</div>
+                    {#if $user}
+                        <CreatePage />    
+                    {:else}
+                        <a href="/dashboard">
+                            <button class="flex-shrink-0 btn-primary" type="button">
+                                Create my landing page
+                            </button>
+                        </a>
+                    {/if}
+                    </div>
 				</div>
 			</div>
 		</div>
