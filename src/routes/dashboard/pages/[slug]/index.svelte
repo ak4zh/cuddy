@@ -9,7 +9,7 @@
 	const { fieldUpdate } = getContext('template');
 
 	let editable = true;
-	let data = pageData?.data
+	let data = pageData?.data || {}
 </script>
 
 <div class="col-span-6 sm:col-span-3 m-4">
