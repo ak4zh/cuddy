@@ -1,6 +1,4 @@
 <script type="ts">
-	import { page } from '$app/stores';
-
 	import * as Templates from '$lib/components/templates';
 
 	export let pageData: Object;
@@ -11,3 +9,4 @@
 </script>
 
 <svelte:component this={template} {editable} {data} />
+
