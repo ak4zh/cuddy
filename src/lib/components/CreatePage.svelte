@@ -1,5 +1,5 @@
 <script type="ts">
-	import { pages } from '$lib/db';
+	import { pagesTable } from '$lib/db';
 	import toast from 'svelte-french-toast';
 
 	import slugify from 'slugify';
@@ -14,7 +14,7 @@
 	$: (async () => {
 		console.log(slug);
 		if (slug) {
-			const { data, error } = await pages.checkAvailability(slug);
+			const { data, error } = await pagesTable.checkAvailability(slug);
 			if (error) {
 				toast.error(error.message);
 			} else if (data.length === 0) {
@@ -26,7 +26,7 @@
 	})();
 
 	async function createPage() {
-		const { data, error } = await pages.createPage(slug);
+		const { data, error } = await pagesTable.createPage(slug);
 		if (error) {
 			toast.error(error.message);
 		} else {

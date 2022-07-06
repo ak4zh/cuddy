@@ -6,8 +6,8 @@
 
 	const { fieldUpdate } = getContext('template');
 
-	$: data = data || {}
-	console.log(data)
+	$: data = data || {};
+	console.log(data);
 </script>
 
 <div class="py-20 h-screen bg-gray-300 px-2">

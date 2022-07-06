@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { navigating, page } from '$app/stores';
 	import Loader from '$lib/components/Loader.svelte';
-	import { pages, user } from '$lib/db';
+	import { pagesTable, user } from '$lib/db';
 	import { loading } from '$lib/utils/stores';
 	import { darkMode } from '$lib/utils/userPref';
 	import { setContext } from 'svelte';
@@ -21,11 +21,10 @@
 
 	async function fieldUpdate(event, data: Object) {
 		data[event.target.id] = event.target.value || event.target.innerText;
-		const { data: pagesData, error } = await pages.updatePage($page.params.slug, data);
+		const { data: pagesData, error } = await pagesTable.updatePage($page.params.slug, data);
 	}
 
 	setContext('template', { fieldUpdate });
-
 </script>
 
 <Toaster />

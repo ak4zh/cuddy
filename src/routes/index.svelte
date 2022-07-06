@@ -1,8 +1,8 @@
 <script type="ts">
 	import CreatePage from '$lib/components/CreatePage.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
-    import { user } from '$lib/db';
-    console.log($user)
+	import { user } from '$lib/db';
+	console.log($user);
 </script>
 
 <NavBar />
@@ -17,23 +17,20 @@
 						<span class="block">Create beautiful landing</span>
 						pages <span class="text-primary">in minutes.</span>
 					</h1>
-					<p class="mt-5 text-2xl text-gray-600">
-						Connect with your audience, capture leads, and export them.
-					</p>
 
 					<div
 						class="mt-8 flex flex-col text-center sm:mt-12 sm:flex-row sm:items-center sm:justify-center sm:space-x-5"
 					>
-                    {#if $user}
-                        <CreatePage />    
-                    {:else}
-                        <a href="/dashboard">
-                            <button class="flex-shrink-0 btn-primary" type="button">
-                                Create my landing page
-                            </button>
-                        </a>
-                    {/if}
-                    </div>
+						{#if $user}
+							<CreatePage />
+						{:else}
+							<a href="/dashboard">
+								<button class="flex-shrink-0 btn-primary" type="button">
+									Create my landing page
+								</button>
+							</a>
+						{/if}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -64,14 +64,17 @@ export const auth = {
 	}
 };
 
-export const myPages = {
+export const pagesTable = {
 	async all() {
 		const query = supabase.from('pages').select('*');
 		return await loaderQuery(query);
-	}
-};
+	},
 
-export const pages = {
+	async search(searchTerm: string) {
+		const query = supabase.from('pages').select('*').ilike('slug', searchTerm);
+		return await loaderQuery(query);
+	},
+
 	async getPage(slug: string) {
 		const query = supabase.from('pages').select('*').eq('slug', slug);
 		return await loaderQuery(query);
