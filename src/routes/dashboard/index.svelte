@@ -18,7 +18,7 @@
 		<div class="py-4">
 			<div class="border-4 border-dashed border-gray-200 rounded-lg min-h-96 flex ">
 				{#if pages}
-					<div class="grid grid-rows-4 gap-4 m-4">
+					<div class="grid grid-cols-4 gap-4 m-4">
 						{#each pages as page}
 							<div class="max-w-md py-4 px-8 bg-amber-200 shadow-lg rounded-3xl my-20">
 								<div class="text-center">
