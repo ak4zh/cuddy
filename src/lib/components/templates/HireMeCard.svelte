@@ -4,8 +4,6 @@
 	export let data: Object = {};
 
 	const { fieldUpdate } = getContext('template');
-
-	console.log(editable);
 </script>
 
 <div
