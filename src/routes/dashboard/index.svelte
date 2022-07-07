@@ -28,7 +28,7 @@
 									</a>
 								</div>
 								<div class="flex justify-end mt-4 gap-4">
-									<a href="/dashboard/pages/{page.slug}">
+									<a sveltekit:prefetch href="/dashboard/pages/{page.slug}">
 										<button class="btn-secondary">Edit</button>
 									</a>
 									<a href="/{page.slug}" target="blank">

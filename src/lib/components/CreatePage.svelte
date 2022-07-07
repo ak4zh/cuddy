@@ -9,10 +9,8 @@
 	let available = true;
 	let invalid = false;
 	let disabled = false;
-	$: console.log(slug);
 	$: disabled = available == true && invalid == false ? false : true;
 	$: (async () => {
-		console.log(slug);
 		if (slug) {
 			const { data, error } = await pagesTable.checkAvailability(slug);
 			if (error) {

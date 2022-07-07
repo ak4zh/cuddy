@@ -2,7 +2,6 @@
 	import CreatePage from '$lib/components/CreatePage.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
 	import { user } from '$lib/db';
-	console.log($user);
 </script>
 
 <div class="bg-clouds h-screen">

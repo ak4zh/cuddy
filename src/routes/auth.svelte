@@ -6,6 +6,7 @@
 	import { auth, user } from '$lib/db';
 	import { createQueryStore } from '$lib/utils/query';
 	import toast from 'svelte-french-toast';
+	import { Toaster } from 'svelte-french-toast';
 
 	let loading = false;
 	const regQuery = createQueryStore('reg');
@@ -53,6 +54,7 @@
 </script>
 
 <NavBar />
+<Toaster />
 <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-md">
 		<h2 class="mt-6 text-center text-3xl font-extrabold">{authText}</h2>

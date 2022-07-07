@@ -12,11 +12,19 @@
 		</h2>
 		<div class="flex gap-4">
 			{#if $page.url.pathname !== '/dashboard'}
-				<a href="/dashboard">
-					<button class="flex-shrink-0 btn-secondary" type="button">
-						{#if $user}My pages{:else}Get started for free{/if}
-					</button>
-				</a>
+				{#if $user}
+					<a sveltekit:prefetch href="/dashboard">
+						<button class="flex-shrink-0 btn-secondary" type="button">
+							My pages
+						</button>
+					</a>
+				{:else}
+					<a href="/dashboard">
+						<button class="flex-shrink-0 btn-secondary" type="button">
+							Get started for free
+						</button>
+					</a>
+				{/if}
 			{/if}
 			{#if $user}
 				<button on:click={() => auth.signOut()} class="flex-shrink-0 btn-primary" type="button">

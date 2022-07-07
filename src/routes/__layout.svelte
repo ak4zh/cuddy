@@ -7,7 +7,6 @@
 	import { loading } from '$lib/utils/stores';
 	import { darkMode } from '$lib/utils/userPref';
 	import { setContext } from 'svelte';
-	import { Toaster } from 'svelte-french-toast';
 	import '../app.css';
 	$: {
 		if (browser) {
@@ -17,7 +16,6 @@
 		}
 	}
 	$: dark = $darkMode;
-	$: console.log($loading || $navigating);
 
 	async function fieldUpdate(event, data: Object) {
 		data[event.target.id] = event.target.value || event.target.innerText;
@@ -26,8 +24,6 @@
 
 	setContext('template', { fieldUpdate });
 </script>
-
-<Toaster />
 
 <div class:dark>
 	<div
