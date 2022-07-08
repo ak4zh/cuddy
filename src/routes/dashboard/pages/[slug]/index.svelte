@@ -1,15 +1,30 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import * as Templates from '$lib/components/templates';
+	import { pagesTable } from '$lib/db';
+	import { demoData } from '$lib/utils/demoData';
+	import { loading } from '$lib/utils/stores';
 	import { getContext } from 'svelte';
 
 	export let pageData: Object;
-
-	let currentTemplate = pageData?.data?.template || 'SimpleCard';
+	let pageContent = pageData?.data || demoData;
+	let currentTemplate = pageContent?.template;
 	$: template = Templates[currentTemplate];
 	const { fieldUpdate } = getContext('template');
 
-	let editable = true;
-	let data = pageData?.data || {};
+	let contenteditable = false;
+	
+	async function saveChanges() {
+		if (contenteditable) {
+			loading.set(true)
+			const { data: respData, error } = await pagesTable.updatePage($page.params.slug, pageContent);
+			loading.set(false)
+		}
+		contenteditable = !contenteditable
+		unique = {}
+	}
+
+	let unique = {}
 </script>
 
 
@@ -39,13 +54,17 @@
 				{/each}
 			</select>	
 		</div>
-	
 		<div class="">
 			<a href="/{pageData.slug}" target="blank">
 				<button class="btn-primary">Preview</button>
 			</a>	
 		</div>
 	</div>
+	<div class="flex justify-center m-4">
+		<button class="btn-secondary" on:click={() => saveChanges()}>{contenteditable ? 'Save Changes' : 'Enable Editing'}</button>
+	</div>
 
-	<svelte:component this={template} {editable} {data} />
+	{#key unique}
+		<svelte:component this={template} bind:contenteditable={contenteditable} {pageContent} />
+	{/key}
 </div>

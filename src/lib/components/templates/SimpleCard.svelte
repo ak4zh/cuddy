@@ -1,7 +1,7 @@
 <script type="ts">
 	import { getContext } from 'svelte';
 
-	export let editable = false;
+	export let contenteditable = false;
 	export let data: Object;
 
 	const { fieldUpdate } = getContext('template');
@@ -17,7 +17,7 @@
 			<div class="flex flex-col items-center">
 				<h1
 					on:blur={(event) => fieldUpdate(event, data)}
-					contenteditable={editable}
+					{contenteditable}
 					id="name"
 					class="text-xl text-white font-medium"
 				>
@@ -25,7 +25,7 @@
 				</h1>
 				<span
 					on:blur={(event) => fieldUpdate(event, data)}
-					contenteditable={editable}
+					{contenteditable}
 					id="bio"
 					class="text-sm text-white">{data.bio || 'Your BMI is 23.84'}</span
 				>

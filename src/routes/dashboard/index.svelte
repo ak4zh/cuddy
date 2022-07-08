@@ -8,7 +8,7 @@
 </script>
 
 <div class="py-6">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col md:flex-row gap-4">
 		<h1 class="text-2xl font-semibold text-gray-900 ">Dashboard</h1>
 		<CreatePage />
 	</div>
@@ -16,11 +16,11 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 items-center">
 		<!-- Replace with your content -->
 		<div class="py-4">
-			<div class="border-4 border-dashed border-gray-200 rounded-lg min-h-96 flex ">
+			<div class="border-4 border-dashed border-gray-200 rounded-lg min-h-96">
 				{#if pages}
-					<div class="grid grid-cols-4 gap-4 m-4">
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-6">
 						{#each pages as page}
-							<div class="max-w-md py-4 px-8 bg-amber-200 shadow-lg rounded-3xl my-20">
+							<div class="max-w-md py-4 px-8 bg-amber-200 shadow-lg rounded-3xl m-2 hover:shadow-2xl shadow">
 								<div class="text-center">
 									<a href="/{page.slug}" target="bla" class="inline-flex">
 										<h2 class="text-gray-800 text-3xl font-semibold underline decoration-dotted">{page.slug}</h2>

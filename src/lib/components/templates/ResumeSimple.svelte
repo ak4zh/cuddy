@@ -1,6 +1,6 @@
 <script type="ts">
 	import { getContext } from 'svelte';
-	export let editable: boolean;
+	export let contenteditable: boolean;
 	export let data: Object = {};
 	const { fieldUpdate } = getContext('template');
 </script>
@@ -14,19 +14,19 @@
             <h1 
               id="name"
               on:blur={(event) => fieldUpdate(event, data)}
-              contenteditable={editable}
+              {contenteditable}
               class="text-2xl text-xl text-gray-800 font-bold">
               {data.name || 'Mohamad Usman'}
             </h1>
             <div 
               id="bio"
               on:blur={(event) => fieldUpdate(event, data)}
-              contenteditable={editable}
+              {contenteditable}
               class="md:text-lg text-gray-600">{data.bio || 'Software Engineer Usman'}</div>
             <div 
               id="email"
               on:blur={(event) => fieldUpdate(event, data)}
-              contenteditable={editable}
+              {contenteditable}
               class="text-gray-600 mt-1">
               {data.email || 'user@example.com'}
             </div>
@@ -39,12 +39,12 @@
         <h1 
         id="header_one"
         on:blur={(event) => fieldUpdate(event, data)}
-        contenteditable={editable}
+        {contenteditable}
         class="mb-4 text-4xl text-gray-700 font-bold">{data.header_one || 'Summary'}</h1>
         <p
           id="header_one_text"
           on:blur={(event) => fieldUpdate(event, data)}
-          contenteditable={editable}
+          {contenteditable}
           class="text-lg">
           {data.header_one_text || "Enthusiastically explore new technologies for efficiency, always looking for ways to solve the problem as efficiently as possible, giving priority simplicity of code."}
         </p>
@@ -53,20 +53,20 @@
         <h1 
           id="header_two"
           on:blur={(event) => fieldUpdate(event, data)}
-          contenteditable={editable}
+          {contenteditable}
           class="mb-4 text-4xl text-gray-700 font-bold">{data.header_one || 'Expirence'}</h1>
         <ul>
           <li class="mb-4">
             <h2
             id="header_three"
             on:blur={(event) => fieldUpdate(event, data)}
-            contenteditable={editable}  
+            {contenteditable}  
             class="text-2xl font-medium text-gray-800">
             {data.header_three || 'Golang Developer'}
             </h2>
             <div class="mt-1">
               <div id="header_three_text"
-              on:blur={(event) => fieldUpdate(event, data)} contenteditable={editable}>
+              on:blur={(event) => fieldUpdate(event, data)} {contenteditable}>
                 <i class="bx bx-buildings" style="color: #666"></i>
                 <small class="text-base text-gray-800">
                   {data.header_three_text || 'PT. Sigma Cipta Caraka (Telkomsigma) '}
@@ -74,7 +74,7 @@
               </div>
               <div id="header_three_sub_text"
               on:blur={(event) => fieldUpdate(event, data)}
-              contenteditable={editable}>
+              {contenteditable}>
                 <i class="bx bx-calendar text-sm" style="color: #666"></i>
                 <small class="text-sm text-gray-600">{data.header_three_sub_text || 'Jan 2021 - Present '}</small>
               </div>

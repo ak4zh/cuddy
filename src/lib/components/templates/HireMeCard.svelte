@@ -1,6 +1,6 @@
 <script type="ts">
 	import { getContext } from 'svelte';
-	export let editable: boolean;
+	export let contenteditable: boolean;
 	export let data: Object = {};
 
 	const { fieldUpdate } = getContext('template');
@@ -18,7 +18,7 @@
 		<h1
 			id="name"
 			on:blur={(event) => fieldUpdate(event, data)}
-			contenteditable={editable}
+			{contenteditable}
 			class="text-lg text-gray-700"
 		>
 			{data.name || 'John Doe'}
@@ -26,7 +26,7 @@
 		<h3
 			id="bio"
 			on:blur={(event) => fieldUpdate(event, data)}
-			contenteditable={editable}
+			{contenteditable}
 			class="text-sm text-gray-400"
 		>
 			{data.bio || 'Creative Director'}
@@ -34,13 +34,13 @@
 		<p
 			id="description"
 			on:blur={(event) => fieldUpdate(event, data)}
-			contenteditable={editable}
+			{contenteditable}
 			class="text-xs text-gray-400 mt-4"
 		>
 			{data.description ||
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
 		</p>
-		{#if editable}
+		{#if contenteditable}
 			<div class="flex gap-4 items-center justify-center">
 				<div class="flex flex-row">
 					<svg
@@ -57,13 +57,13 @@
 					<p
 						id="cta-url"
 						on:blur={(event) => fieldUpdate(event, data)}
-						contenteditable={editable}
+						{contenteditable}
 						placeholder="https://example.com"
 					>
 						{data['cta-url'] || 'https://example.com'}
 					</p>
 				</div>
-				<p id="cta-title" on:blur={(event) => fieldUpdate(event, data)} contenteditable={editable}>
+				<p id="cta-title" on:blur={(event) => fieldUpdate(event, data)} {contenteditable}>
 					{data['cta-text'] || 'Hire Me'}
 				</p>
 			</div>
