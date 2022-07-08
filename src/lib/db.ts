@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { loading } from './utils/stores';
-import { readable } from 'svelte/store';
+import { get, readable } from 'svelte/store';
 import { goto } from '$app/navigation';
 
 const dbAPI = async (query) => {
@@ -66,8 +66,12 @@ export const auth = {
 
 export const pagesTable = {
 	async all() {
-		const query = supabase.from('pages').select('*');
-		return await loaderQuery(query);
+		if (get(user)) {
+			const query = supabase.from('pages').select('*').eq('user_id', get(user)?.id);
+			return await loaderQuery(query);	
+		} else {
+			return {}
+		}
 	},
 
 	async search(searchTerm: string) {
