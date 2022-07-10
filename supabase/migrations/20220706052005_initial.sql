@@ -1,9 +1,13 @@
 CREATE TABLE public.user_profiles (
 		id uuid NOT NULL PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-		first_name character varying,
 		full_name character varying,
+		username character varying UNIQUE,
 		email character varying UNIQUE,
 		created_at timestamp without time zone DEFAULT now() NOT NULL
+		bummer jsonb,
+		public boolean DEFAULT true NOT NULL,
+		featured boolean,
+		view_count integer DEFAULT 0
 );
 
 ALTER TABLE public.user_profiles ENABLE ROW LEVEL SECURITY;
@@ -42,18 +46,7 @@ CREATE TRIGGER handle_new_user
 		FOR EACH ROW
 EXECUTE FUNCTION public.handle_new_user();
 
-
-CREATE TABLE IF NOT EXISTS public.pages (
-		id BIGSERIAL PRIMARY KEY,
-        user_id uuid DEFAULT auth.uid() REFERENCES public.user_profiles(id) ON DELETE CASCADE,
-		created_at timestamp without time zone DEFAULT now(),
-		slug text COLLATE pg_catalog."default" NOT NULL UNIQUE,
-		data jsonb
-);
-
-ALTER TABLE public.pages ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "user_profiles.allow_select_by_everyone" ON public.pages FOR SELECT USING ((true));
-CREATE POLICY "user_profiles.allow_insert_by_owner" ON public.pages FOR INSERT WITH CHECK ((auth.uid() = user_id));
-CREATE POLICY "organization_members.allow_update_by_owner" ON public.pages FOR UPDATE USING ((auth.uid() = user_id));
-CREATE POLICY "organization_members.allow_delete_by_owner" ON public.pages FOR DELETE USING ((auth.uid() = user_id));
+CREATE OR REPLACE VIEW bummers AS
+	SELECT bummer, username, featured, view_count
+	FROM public.user_profiles
+	WHERE public = true;

@@ -1,10 +1,8 @@
 <script>
-import { page } from '$app/stores';
-
 	import CreatePage from '$lib/components/CreatePage.svelte';
 	import { pagesTable } from '$lib/db';
 
-	export let pages = [];
+	let pages = [];
 
 	async function loadPages() {
 		const {data, error} = await pagesTable.all();
