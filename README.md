@@ -1,5 +1,12 @@
 Will update README soon
 
+### TODO:
+- Update to latest sveltekit
+- Add more page templates
+- Improve the way data is stored in database
+- Think about dropping supabase and using deta.sh or cloudflare kv as supa shuts down after 7 days.
+
+
 Here's some screenshots:
 
 ### Landing page
